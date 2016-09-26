@@ -1,0 +1,79 @@
+<html lang="en">
+	<head>
+		<title>Culture and History Generator</title>
+		<!-- Inclusion of jQuery -->
+		<!-- NEED TO TINKER WITH THE STYLE SHEET -->
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		
+		<!-- Styling -->
+		<!-- <style type="text/css">
+			h3:hover { cursor: pointer; }
+		</style> -->
+		
+		<!-- This was INTENDED to fix dynamically adding collapsibles but nope! NOPE!!!
+		<script type="text/javascript">
+		$(document).ready(function($) 
+		{
+			setInterval(function()
+			{
+				$("#screen").load('banners.php')
+			}, 2000);
+		});
+		</script> -->
+		
+		<script src="js/Loader.js"></script>
+		<script src="js/Main.js"></script>
+		<script src="js/Continent.js"></script>
+		<script src="js/Culture.js"></script>
+		<script src="js/Religion.js"></script>
+		<script src="js/Empire.js"></script>
+		<script src="js/HistoryEvent.js"></script>
+	</head>
+	<body>
+		<h1 id="Title">Culture and History Generator</h1>
+		<!-- Continents -->
+		<div data-role="main" class="ui-content">
+			<div data-role="collapsible">
+			<h1>Continents</h1>
+			<p id="Continents">I'm the expanded content.</p>
+			</div>
+		</div>
+		<!-- Empires -->
+		<div data-role="main" class="ui-content">
+			<div data-role="collapsible">
+			<h1>Empires</h1>
+			<p id="Empires">I'm the expanded content.</p>
+			</div>
+		</div>
+		<!-- Cultures -->
+		<div data-role="main" class="ui-content">
+			<div data-role="collapsible">
+			<h1>Cultures</h1>
+			<!-- MODIFY LATER - add a sub-div for every culture? -->
+			<p id="Cultures">I'm the expanded content.</p>
+				
+				<!-- <div data-role="main" class="ui-content">
+				<div data-role="collapsible">
+				<h1>Example</h1>
+				<p id="example">I'm the expanded content.</p>
+				</div>
+				</div>-->
+			</div> 
+		</div>
+		<!-- World History -->
+		<div data-role="main" class="ui-content">
+			<div data-role="collapsible">
+			<h1>World History</h1>
+			<p id="WorldHistory">I'm the expanded content.</p>
+			</div>
+		</div>
+		<button type="button" id="btn_NewContinentSet">New Continents & Cultures</button>
+		<button type="button" id="btn_NewCultureSet">New Cultures</button>
+		<p>Number of Continents: <input type="number" value=4 min=2 max=20 id="input_NumContinents" /></p>
+		<p>Number of Cultures: <input type="number" value=10 min=4 max=200 id="input_NumCultures" /></p>
+		<button type="button" id="btn_GenerateHistory">Let The World Turn</button>
+		<p>Years per Turn: <input type="number" value=50 min=1 max=500 id="input_YearsPerTurn" /></p>
+	</body>
+</html>

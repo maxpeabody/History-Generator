@@ -1,0 +1,114 @@
+History Generator
+
+Dev Order
+=========
+- FIRST: Random generation of individual cultures
+- SECOND: Random generation of continents and how they border each other
+- THIRD: Assigning cultures to empires; assigning empires and independent cultures to continents
+- FOURTH: Events and interactions between cultures/empires
+
+Simplified version
+=================
+(NECESSARY CLASSES: Continent, Biome, Empire, Culture)
+- Generate array of continents
+-- ID
+-- Name
+-- Size
+-- Array 2-3 climates, each w/ a major geographical feature
+-- Empty array of empires, empty array of cultures
+-- Empty array of religions
+- Determine how continents border each other (Foreach) (Array by ID of continent)
+-- If the same continent, just call the border "same" or leave it null
+-- If "num borders tracker" >= 2, assign all remaining borders as "distant land"
+-- Check if a relationship exists w/ other continent
+--- "Does it border two continents already?"
+---- If so, assign: "near overseas" or "distant land"
+--- "Does it border any other continent?"
+---- If so AND this continent also borders that one, assign: "near overseas" or
+	the same border
+---- Else, assign: any value NOT on the same axis (i.e., if 1 borders 2 on the north,
+	it cannot border 3 on the south - only the east or west)
+--- If it borders no other continent, assign: anything BUT "distant land"
+---- This way there should be a maximum of, like, one "Australia"
+--- Randomly add either 1 or 2 to "num borders tracker" if anything besides "distant land" was chosen
+
+- Determine # of empires + # of cultures
+-- Empires: 50%-100% the amount of continents, rounded up
+-- Cultures: Avg. [var] per continent
+- Distribute cultures
+-- Determine each continent's size as % of entire planet
+--- Some randomization? (Low priority)
+-- Assign cultures accordingly, then check for extras + distribute them randomly
+
+- (Foreach culture) in foreach continent
+-- Name (pick 2-4 syllables, then possibly add "ish"/"lish", "ese", or "ian" to the end)
+--- Make sure to factor in pluralization!
+-- On border? On coast?
+-- Terrain? (Only spawn "coastal" if country on coast)
+-- Major industry (randomized; can be based on terrain)
+-- Food stuff?
+-- Starting religion
+-- Government type
+-- Empty array of famous people (founders of empires; prophets + 
+	convert kings; great artists, scientists, theologians, philosophers)
+-- Empty "history" array to hold all events that occur in chronological
+	order
+
+- Events
+-- CIVIL WAR (Two parameters: Thing to change + new value)
+--- Dissidents are crushed
+--- Dissidents take power
+---- Modify culture accordingly
+--- Country splits apart permanently
+---- IF CULTURE: Create new culture on same or (if on border) bordering
+	continent, patterned off existing one but modified accordingly
+---- Remove all countries from empire + delete empire
+-- WAR WITH [COUNTRY]
+--- White peace
+--- X conquers Y
+---- IF CULTURE IN EMPIRE: Y may or may not join empire
+---- IF CULTURE NOT IN EMPIRE: X may or may not form a new empire
+--- X forces Y to convert
+--- X is driven back by Y
+--- X loots Y
+--- Y humiliates X
+--- X is destabilized and falls into civil war
+--- SECONDARY, IF X OR Y HAS RIVAL: [X/Y] forms an alliance with Z
+	(the two will almost always stop being rivals)
+--- SECONDARY: X and Y become rivals
+-- RELIGIOUS
+--- Religions will never completely disappear; it can be assumed that
+	smaller cultures + pockets of apostasy will always exist
+--- Missionaries from X visit Y and establish a community
+--- IF MONARCHY OR THEOCRACY: Ruler of X converts and the nation follows
+---- On very rare occasions, may also create entire new heresy
+--- Religious schism
+---- Never will EVERY country following a certain religion convert
+---- May lead to civil war
+-- SCIENCE
+-- CULTURE
+--- X makes tremendous strides in [art/literature/music/science/
+	philosophy/theology]
+--- A(n) X historian writes a comprehensive text on the region
+--- X's dominant industry changes
+--- X [cuisine/writing/art/music] influences the Ys
+--- Xs and Ys become friends (or fall out)
+--- Xs and Ys become rivals (or mend fences)
+--- IF FRIENDS: X and Y form a federation/personal union/coalition
+	government
+--- IF FRIENDS: X and Y cultural exchange OR X cultural dominance
+over Y (in the former, 1/3 chance of swapping either way; in the latter,
+1/2 chance of X supplanting Y in any given respect)
+--- IF RIVALS AND IN EMPIRE: Empire experiences civil war
+
+Full version?
+=================
+- Generate map
+- Define continents
+-- Divide them at chokepoints & water barriers; that is, loop thru area of the map until only one "new" square adjacent,
+then call that a continent
+- Determine number of cultures
+-- Continents * (cultures per empire + 3)
+- Randomly generate base details of new cultures
+- Distribute cultures
+-- 
